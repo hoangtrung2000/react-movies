@@ -5,7 +5,7 @@ import Home from '../pages/Home';
 import Catalog from '../pages/Catalog';
 import Detail from '../pages/Detail';
 
-function MyRoutes() {
+function MyRoutes() { 
   return;
   <Routes>
     <Route path="/" element={<Home />} />

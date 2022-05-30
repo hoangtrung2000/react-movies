@@ -18,7 +18,7 @@ export const tvType = {
 
 const tmdbApi = {
   getMoviesList: (type, params) => {
-    const url = 'movie/' + movieType[type]; // movieType['popular']
+    const url = 'movie/' + movieType[type]; // movieType['popular'] > "popular"
     return axiosClient.get(url, params);
   },
   getTvList: (type, params) => {

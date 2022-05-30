@@ -24,6 +24,7 @@ const cx = classNames.bind(styles);
 function Header() {
   const { pathname } = useLocation();
   const headerRef = useRef(null);
+
   useEffect(() => {
     const handleShrinkHeader = () => {
       if (
