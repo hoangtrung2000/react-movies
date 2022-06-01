@@ -33,11 +33,98 @@
     background-image: linear-gradient(to top, $body-bg, rgba($black, 0));
   }
 }
-
 .content {
-  @include flex(center, center);
+  position: relative;
 
-  &-infor {
+  @include flex(center, center);
+  gap: 5rem;
+
+  &-info {
     width: 55%;
+    padding: 0 3rem;
+    position: relative;
+
+    @include tablet {
+      width: 100%;
+    }
+
+    & > * ~ * {
+      margin-top: 3rem;
+    }
+
+    .title {
+      font-size: 4rem;
+      font-weight: 700;
+      line-height: 1;
+    }
+
+    @include tablet {
+      font-size: 3rem;
+    }
+
+    .overview {
+      display: -webkit-box;
+      -webkit-line-clamp: 3; // số dòng muốn hiển thị
+      -webkit-box-orient: vertical;
+      text-overflow: ellipse;
+      overflow: hidden;
+      font-weight: 600;
+    }
+
+    .btns > * ~ * {
+      margin-left: 1rem;
+    }
+
+    .btns,
+    .title,
+    .overview {
+      opacity: 0;
+      transform: translateY(-100px);
+      transition: transform 0.5s ease, opacity 0.5s ease;
+    }
+  }
+
+  &-poster {
+    flex: 1;
+    position: relative;
+    @include flex(center, flex-start);
+
+    img {
+      width: 350px;
+      border-radius: $border-radius;
+      box-shadow: $box-shadow;
+      transform: scale(0);
+      transition: transform 0.7s ease;
+    }
+
+    @include tablet {
+      display: none;
+    }
+  }
+}
+
+.active > .content > .content-poster {
+  img {
+    transform: scale(1);
+  }
+}
+
+.active > .content > .content-info {
+  .btns,
+  .title,
+  .overview {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  .title {
+    transition-delay: 0.3s, 0.3s;
+  }
+
+  .overview {
+    transition-delay: 0.6s, 0.6s;
+  }
+
+  .btns {
+    transition-delay: 0.9s, 0.9s;
   }
 }

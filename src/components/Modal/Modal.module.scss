@@ -1,4 +1,4 @@
-@use '../../../../scss/' as *;
+@use '../../scss/' as *;
 
 .modal {
   @include flex(center, center);
@@ -24,7 +24,7 @@
     width: 50%;
     opacity: 0;
     transform: translateY(-250px);
-    transition: transform 0.6 ease, opacity 0.6 ease;
+    transition: transform 0.6s ease, opacity 0.6s ease;
     position: relative;
 
     @include tablet {
@@ -32,9 +32,9 @@
     }
     &-close {
       position: absolute;
-      top: 5px;
       right: 5px;
-      font-size: 1.5em;
+      top: 5px;
+      font-size: 1.5rem;
       cursor: pointer;
 
       &:hover {

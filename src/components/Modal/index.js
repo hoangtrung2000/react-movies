@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames/bind';
-import styles from './Modal.moulde.scsss';
+import styles from './Modal.module.scss';
 
 const cx = classNames.bind(styles);
 function Modal(props) {
@@ -12,7 +12,7 @@ function Modal(props) {
   }, [props.active]);
 
   return (
-    <div id={props.id} className={cx(`modal ${active ? 'active' : ''}`)}>
+    <div id={props.id} className={cx('modal', `${active ? 'active' : ''}`)}>
       {props.children}
     </div>
   );
@@ -22,7 +22,7 @@ export const ModalContent = (props) => {
   const contentRef = useRef(null);
 
   const closeModal = () => {
-    contentRef.current.parentNode.classList.remove('active');
+    contentRef.current.parentNode.classList.remove(cx('active'));
     if (props.onClose) {
       props.onClose();
     }
@@ -30,7 +30,9 @@ export const ModalContent = (props) => {
   return (
     <div ref={contentRef} className={cx('modal-content')}>
       {props.children}
-      <div className={cx('modal-content-close')} onClick={closeModal}></div>
+      <div className={cx('modal-content-close')} onClick={closeModal}>
+        <i className="bx bx-x"></i>
+      </div>
     </div>
   );
 };

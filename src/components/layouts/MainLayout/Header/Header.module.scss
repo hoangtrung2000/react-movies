@@ -26,6 +26,11 @@
   z-index: 99;
   transition: height 0.3s ease, background-color 0.3s ease;
 
+  &.shrink {
+    height: $header-shrink-height;
+    background-color: $body-bg;
+  }
+
   &-wrapper {
     @include flex(center, space-between);
     height: 100%;
@@ -83,10 +88,5 @@
         margin-left: 0;
       }
     }
-  }
-
-  &.shrink {
-    height: $header-shrink-height;
-    background-color: $body-bg;
   }
 }

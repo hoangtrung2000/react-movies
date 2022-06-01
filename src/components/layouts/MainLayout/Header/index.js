@@ -29,7 +29,7 @@ function Header() {
     const handleShrinkHeader = () => {
       if (
         document.body.scrollTop > 100 ||
-        document.documentElement.scrollTo > 100
+        document.documentElement.scrollTop > 100
       ) {
         headerRef.current.classList.add(cx('shrink'));
       } else {
@@ -51,7 +51,7 @@ function Header() {
       <div className={cx('header-wrapper', 'container')}>
         <div className={cx('logo')}>
           <img src={logo} alt="logo" />
-          <Link to="./">tMovie</Link>
+          <Link to="/">tMovie</Link>
         </div>
         <ul className={cx('header-nav')}>
           {headerNav.map((link, index) => (
