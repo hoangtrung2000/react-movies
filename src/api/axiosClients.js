@@ -8,8 +8,10 @@ const axiosClient = axios.create({
   headers: {
     'Content-type': 'application/json',
   },
-  paramsSerializer: (params) =>
-    queryString.stringify({ ...params, api_key: apiConfig.apiKey }), //baseURL/movie/popular?
+  // serialize the following typeof value passed in obj: <string> <number> <bigint> <boolen> ...
+  paramsSerializer: (params) => {
+    return queryString.stringify({ ...params, api_key: apiConfig.apiKey }); //baseURL/movie/popular?
+  },
 });
 
 axiosClient.interceptors.request.use(async (config) => config);

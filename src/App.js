@@ -1,4 +1,4 @@
-import 'swiper/css';
+import 'swiper/scss';
 import './assets/boxicons-2.0.7/css/boxicons.min.css';
 import { Route, Routes } from 'react-router-dom';
 

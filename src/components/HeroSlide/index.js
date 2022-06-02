@@ -58,7 +58,7 @@ function HeroSlide() {
 }
 
 const HeroSlideItem = (props) => {
-  let history = useNavigate();
+  let navigate = useNavigate();
 
   const item = props.item;
   const background = apiConfig.orginalImage(
@@ -71,6 +71,7 @@ const HeroSlideItem = (props) => {
     const videos = await tmdbApi.getVideos(category.movie, item.id);
 
     if (videos.results.length > 0) {
+      // response: {id, results[{}, {}, ....]}
       const videSrc = 'https://www.youtube.com/embed/' + videos.results[0].key;
       modal
         .querySelector('.Modal_modal-content__9acm1 > iframe')
@@ -91,7 +92,7 @@ const HeroSlideItem = (props) => {
           <h2 className={cx('title')}>{item.title}</h2>
           <div className={cx('overview')}>{item.overview}</div>
           <div className={cx('btns')}>
-            <Button onClick={() => history('/movie/' + item.id)}>
+            <Button onClick={() => navigate('/movie/' + item.id)}>
               Watch now
             </Button>
             <OutlineButton onClick={setModalActive}>
