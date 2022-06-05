@@ -4,6 +4,7 @@ import { OutlineButton } from '../components/Button';
 import HeroSlide from '../components/HeroSlide';
 import MovieList from '../components/MovieList';
 import { category, movieType, tvType } from '../api/tmdbApi';
+
 function Home() {
   return (
     <>
