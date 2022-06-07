@@ -1,6 +1,6 @@
-import React, { useEffect, useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import classNames from 'classnames/bind';
-import { useParams } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 
 import styles from './MovieGrid.module.scss';
 import tmdbApi, {
@@ -10,8 +10,10 @@ import tmdbApi, {
 } from '../../api/tmdbApi';
 import MovieCard from '../MovieCard';
 import { OutlineButton } from '../Button';
+import Input from '../Input';
 
 const cx = classNames.bind(styles);
+
 function MovieGird({ category }) {
   const [items, setItems] = useState([]);
   const [page, setPage] = useState(1);
@@ -76,6 +78,9 @@ function MovieGird({ category }) {
 
   return (
     <>
+      <div className="section mb-3">
+        <MovieSearch category={category} keyword={keyword} />
+      </div>
       <div className={cx('movie-grid')}>
         {items.map((item, index) => (
           <MovieCard key={index} item={item} category={category} />
@@ -92,4 +97,47 @@ function MovieGird({ category }) {
   );
 }
 
+const MovieSearch = ({ keyword, category }) => {
+  let navigate = useNavigate();
+  const [searchKey, setSearchKey] = useState(keyword ? keyword : '');
+
+  const goToSearch = useCallback(() => {
+    if (searchKey.trim().length > 0) {
+      navigate(`/${cate[category]}/search/${searchKey}`);
+      setSearchKey('');
+    }
+  }, [searchKey, category, navigate]);
+
+  useEffect(() => {
+    const enterEvent = (e) => {
+      e.preventDefault();
+      if (e.keyCode === 13) {
+        goToSearch();
+      }
+    };
+    document.addEventListener('keyup', enterEvent);
+
+    return () => {
+      document.removeEventListener('keyup', enterEvent);
+    };
+  }, [keyword, goToSearch]);
+
+  const handleChange = (e) => {
+    const inputValue = e.target.value;
+    if (!inputValue.startsWith(' ')) {
+      setSearchKey(inputValue);
+    }
+  };
+
+  return (
+    <div className={cx('movie-search')}>
+      <Input
+        type="text"
+        placeholder="Enter your keyword"
+        value={searchKey}
+        onChange={handleChange}
+      />
+    </div>
+  );
+};
 export default MovieGird;

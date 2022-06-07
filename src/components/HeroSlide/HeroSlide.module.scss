@@ -69,6 +69,10 @@
       text-overflow: ellipse;
       overflow: hidden;
       font-weight: 600;
+
+      @include mobile {
+        font-size: 1.5rem;
+      }
     }
 
     .btns > * ~ * {

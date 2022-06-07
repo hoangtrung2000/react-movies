@@ -1,0 +1,16 @@
+@use './../../scss/' as *;
+
+.input {
+  padding: 0.5rem 1.5rem;
+  width: 100%;
+  border: 1px solid transparent;
+  border-radius: $border-radius;
+  background-color: $black;
+  color: $main-color;
+  font-size: 1rem;
+  font-family: $font-family;
+
+  &:focus {
+    border-color: currentColor;
+  }
+}
