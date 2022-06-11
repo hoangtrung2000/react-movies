@@ -11,7 +11,6 @@
     max-width: 1000px;
 
     &-logo {
-      margin-bottom: 3rem;
       @include flex(center, center);
 
       .logo {
@@ -22,11 +21,10 @@
 
         img {
           margin-right: 10px;
-          width: 50px;
+          width: 200px;
 
           @include mobile {
-            width: 30px;
-            margin-right: 0;
+            width: 100px;
           }
         }
       }
@@ -37,7 +35,8 @@
       grid-template-columns: repeat(3, 1fr);
 
       @include mobile {
-        grid-template-columns: repeat(2, 1fr);
+        grid-template-columns: repeat(3, 2fr);
+        gap: 10px;
       }
 
       .menu {

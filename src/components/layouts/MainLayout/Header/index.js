@@ -2,7 +2,7 @@ import React, { useRef, useEffect } from 'react';
 import classNames from 'classnames/bind';
 import { Link, useLocation } from 'react-router-dom';
 
-// import logo from '../../../../assets/tmovie.png';
+import logo from '../../../../assets/logo2.png';
 import styles from './Header.module.scss';
 
 const headerNav = [
@@ -50,8 +50,10 @@ function Header() {
     <div ref={headerRef} className={cx('header')}>
       <div className={cx('header-wrapper', 'container')}>
         <div className={cx('logo')}>
-          {/* <img src={logo} alt="logo" /> */}
-          <Link to="/">Reactflix</Link>
+          <Link to="/">
+            {' '}
+            <img src={logo} alt="logo" />
+          </Link>
         </div>
         <ul className={cx('header-nav')}>
           {headerNav.map((link, index) => (

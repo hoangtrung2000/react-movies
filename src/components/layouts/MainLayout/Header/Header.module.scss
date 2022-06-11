@@ -7,12 +7,13 @@
   @include flex(center, unset);
 
   img {
-    margin-right: 10px;
-    width: 50px;
+    padding-left: 30px;
+    width: 164px;
 
     @include mobile {
-      width: 30px;
-      margin-right: 0;
+      padding-left: 0;
+      width: 80px;
+      margin-top: 10px;
     }
   }
 }

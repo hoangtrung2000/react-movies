@@ -2,12 +2,9 @@ import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames/bind';
 import { Swiper, SwiperSlide } from 'swiper/react';
-import { Link } from 'react-router-dom';
 
 import styles from './MovieList.module.scss';
-import Button from '../Button';
 import tmdbApi, { category } from '../../api/tmdbApi';
-import apiConfig from '../../api/apiConfig';
 import MovieCard from '../MovieCard';
 
 const cx = classNames.bind(styles);
@@ -29,7 +26,7 @@ const MovieList = (props) => {
             response = await tmdbApi.getTvList(props.type, { params });
         }
       } else {
-        response = await tmdbApi.similar(props.type, props.id);
+        response = await tmdbApi.similar(props.category, props.id);
       }
       setItems(response.results);
     };
